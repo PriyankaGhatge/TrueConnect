@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div ng-controller="HomeController as ctrl">
+		<div ng-show="currentUser.useremail!==undefined">
+			<div class="nav navbar-nav navbar-left">Welcome User
+				{{currentUser.fstanme}} - {{currentUser.useremail}}</div>
+			<div class="nav navbar-nav navbar-right">You Logged in as :
+				{{currentUser.currentrole}}</div>
+		</div>
+	</div>
+</body>
+</html>

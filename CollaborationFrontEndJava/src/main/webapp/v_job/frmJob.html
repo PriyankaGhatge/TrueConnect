@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div class="container" ng-controller="JobController as ctrl">
+		<br/><br/><br/><br/><br/>
+		<form class="form-horizontal" name="myForm" role="form" ng-submit="ctrl.submit()">
+			
+			<div class="form-group" ng-class="{'has-error': form.title.$dirty && form.title.$error.required}">
+				<label for="title" class="col-sm-3 control-label">Job Title :</label>
+				<div class="col-sm-6">
+					<input type="text" name="title" id="title" class="form-control" ng-model="ctrl.job.title" required/>
+					<span ng-show="form.title.$dirty && form.title.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.description.$dirty && form.description.$error.required}">
+				<label for="description" class="col-sm-3 control-label">Job description :</label>
+				<div class="col-sm-6">
+					<textarea rows="5" cols="80" id="description" name="description" class="form-control" ng-model="ctrl.job.description" required></textarea>
+					<span ng-show="form.description.$dirty && form.description.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.qualification.$dirty && form.qualification.$error.required}">
+				<label for="qualification" class="col-sm-3 control-label">Job qualification :</label>
+				<div class="col-sm-6">
+					<input type="text" name="qualification" id="qualification" class="form-control" ng-model="ctrl.job.qualification" required/>
+					<span ng-show="form.qualification.$dirty && form.qualification.$error.required" class="help-block"></span>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': form.location.$dirty && form.location.$error.required}">
+				<label for="location" class="col-sm-3 control-label">Job location :</label>
+				<div class="col-sm-6">
+					<input type="text" name="location" id="location" class="form-control" ng-model="ctrl.job.location" required/>
+					<span ng-show="form.location.$dirty && form.location.$error.required" class="help-block"></span>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': form.experience.$dirty && form.experience.$error.required}">
+				<label for="experience" class="col-sm-3 control-label">Job experience :</label>
+				<div class="col-sm-6">
+					<input type="text" name="experience" id="experience" class="form-control" ng-model="ctrl.job.experience" required/>
+					<span ng-show="form.experience.$dirty && form.experience.$error.required" class="help-block"></span>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': form.companyname.$dirty && form.companyname.$error.required}">
+				<label for="companyname" class="col-sm-3 control-label">Job companyname :</label>
+				<div class="col-sm-6">
+					<input type="text" name="companyname" id="companyname" class="form-control" ng-model="ctrl.job.companyname" required/>
+					<span ng-show="form.companyname.$dirty && form.companyname.$error.required" class="help-block"></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+					<button type="submit" ng-disabled="form$invalid || ctrl.dataLoading" class="btn btn-info">Save Job?</button>
+					<button type="reset" class="btn btn-danger" ng-click="ctrl.reset()" >Clear</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

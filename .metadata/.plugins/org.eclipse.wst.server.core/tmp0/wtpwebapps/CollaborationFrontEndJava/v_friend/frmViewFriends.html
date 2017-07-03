@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div class="generic-container" ng-controller="FriendController as ctrl">
+		<br/><br/><br/><br/><br/>
+		<div class="row">
+			<h3>My Friends({{ctrl.friends.length}})&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#/listpending" role="button" class="btn btn-primary" ng-click="ctrl.pendingfriends()">Request Pending</a>
+			<a href="#/listallusers" role="button" class="btn btn-primary" ng-click="ctrl.fetchAllUsers()">Search Friends</a>
+			</h3>
+			<div ng-repeat="up in ctrl.friends | filter: {status:'A'}">
+				<div id="isotope-gallery-container">
+					<div class="col-md-3 col-sm-6 col-xs-12 gallery-item-wrapper">
+						<div class="gallery-item" style="text-align: center;">
+							<div class="gallery-thumb">
+								<div class="panel panel-default">
+									<div ng-show="{{up.requser!==currentUser.useremail}}">
+										<div class="panel-heading"
+											ng-repeat="un in ctrl.users | filter: {useremail: up.requser}">
+											<b ng-show="un.useronline=='Y'" style="color: green">I am Online</b> 
+											<b ng-show="un.useronline=='N'" style="color: red">I am Offline</b> 
+											<br/>
+												<img src="./resources/images/{{un.avtar}}" height="100px" width="110px"
+											    alt="{{up.fstname}}"/><br/>
+											{{un.fstname}}&nbsp;&nbsp;{{un.midname}}&nbsp;&nbsp;{{un.lstname}}&nbsp;&nbsp;<br />
+											<b>{{un.dateofbirth | date:fullDate}}, {{un.gender}}</b><br />
+											{{un.city}}, {{un.useremail}}<br />
+										</div>
+									</div>
+									<div ng-show="{{up.requser==currentUser.useremail}}">
+										<div class="panel-heading"
+											ng-repeat="un in ctrl.users | filter: {useremail: up.touser}">
+											<b ng-if="up.isonline=='Y'" style="color: green">I am Online</b> 
+											<b ng-if="up.isonline=='N'" style="color: red">I am Offline</b> 
+											<br/>
+												<img src="./resources/images/{{un.avtar}}" height="100px" width="110px"
+											    alt="{{up.fstname}}"/><br/>
+											{{un.fstname}}&nbsp;&nbsp;{{un.midname}}&nbsp;&nbsp;{{un.lstname}}&nbsp;&nbsp;<br />
+											<b>{{un.dateofbirth | date:fullDate}}, {{un.gender}}</b><br />
+											{{un.city}}, {{un.useremail}}<br />
+										</div>
+									</div>
+									<div class="panel-body">
+											<input type="button" class="btn btn-danger"
+											value="Unfollow" ng-click="ctrl.unfollowfriend(up.reqid)">
+											<a href="#/enterchat" role="button" class="btn btn-primary">Message</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

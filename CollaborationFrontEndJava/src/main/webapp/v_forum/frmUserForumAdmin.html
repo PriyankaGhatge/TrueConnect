@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div class="generic-container" ng-controller="ForumController as ctrl">
+		<br/><br/><br/>
+		<h3>List of Forums</h3>
+		<table class="table table-striped" style="width: 100%">
+			<tr style="font-weight: bold;">
+				<td style="width: 10%">ID#</td>
+				<td style="width: 10%">POST DATE</td>
+				<td style="width: 20%">TITLE</td>
+				<td style="width: 40%">DESCRIPTION</td>
+				<td style="width: 10%">By Whom?</td>
+				<td style="width: 10%">Approve</td>
+			</tr>
+			<tr ng-repeat="uf in ctrl.forums | filter : { approve: 'N' }:true">
+				<td style="width: 10%">{{uf.forumid}}</td>
+				<td style="width: 10%">{{uf.createdate}}</td>
+				<td style="width: 20%">{{uf.title}}</td>
+				<td style="width: 40%">{{uf.description}}</td>
+				<td style="width: 10%">{{uf.useremail}}</td>
+				<td style="width: 10%">
+					<input type="button" class="btn btn-info" value="Approve" ng-click="ctrl.approveforum(uf.forumid)">
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

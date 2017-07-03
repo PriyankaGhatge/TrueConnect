@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top headroom">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><img
+					src="resources/assets/images/logo.png"
+					alt="Progressus HTML5 template"></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li class="active"><a href="#">Home</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Blogs<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/viewblogs">View Blog</a></li>
+							<li><a href="#/addblog">Post Blogs</a></li>
+							<li><a href="#/myblog">My Blogs</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Forum<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/viewforums">View Forums</a></li>
+							<li><a href="#/addforum">Post Forum</a></li>
+							<li><a href="#/myforum">My Forum</a></li>
+						</ul></li>
+					<li><a href="#/viewbulletin">Bulletins</a></li>
+					<li><a href="#/viewevents">Event</a></li>
+					<li><a href="#/listmyfriends">Friends</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Career<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/viewjobs">View Jobs</a></li>
+							<li><a href="#/viewappliedjobs">Applied Jobs</a></li>
+						</ul>
+					<li><a href="#/chatroom">Chat</a></li>
+					<li><a ng-hide="currentUser.useremail==undefined"
+						href="#/home" ng-click="ctrl.logoutuser()">Logout</a></li>
+					<li style="font-weight: bold; color: white;"
+						ng-show="currentUser.useremail!==undefined"><br />
+					<br />{{currentUser.useremail}} : {{currentUser.currentrole}}
+			</div>
+			</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

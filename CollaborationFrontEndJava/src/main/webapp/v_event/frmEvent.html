@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div class="container" ng-controller="EventController as ctrl">
+		<br/><br/><br/><br/><br/><br/>
+		<h2>Add new Event</h2>
+		<form class="form-horizontal" name="myForm" role="form" ng-submit="ctrl.submit()">
+			
+			<div class="form-group" ng-class="{'has-error': form.subject.$dirty && form.subject.$error.required}">
+				<label for="subject" class="col-sm-3 control-label">Event Title :</label>
+				<div class="col-sm-6">
+					<input type="text" name="subject" id="subject" class="form-control" ng-model="ctrl.event.subject" required/>
+					<span ng-show="form.subject.$dirty && form.subject.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.description.$dirty && form.description.$error.required}">
+				<label for="description" class="col-sm-3 control-label">Event Description :</label>
+				<div class="col-sm-6">
+					<textarea rows="5" cols="80" id="description" name="description" class="form-control" ng-model="ctrl.event.description" required></textarea>
+					<span ng-show="form.description.$dirty && form.description.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.venue.$dirty && form.venue.$error.required}">
+				<label for="venue" class="col-sm-3 control-label">Event Venue :</label>
+				<div class="col-sm-6">
+					<input type="text" name="venue" id="venue" class="form-control" ng-model="ctrl.event.venue" required/>
+					<span ng-show="form.venue.$dirty && form.venue.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+					<button type="submit" ng-disabled="form$invalid || ctrl.dataLoading" class="btn btn-info">Save Event?</button>
+					<button type="reset" class="btn btn-danger" ng-click="ctrl.reset()" >Clear</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div class="generic-container" ng-controller="FriendController as ctrl">
+	<br/><br/><br/><br/><br/>
+		Search Forum:<input type="text" class="form-control control-label"
+			size="80" ng-model="searchTerm" /><br />
+		<a href="#/listmyfriends" role="button" class="btn btn-primary" ng-click="ctrl.viewfriends()">My Friends</a>
+		<a href="#/listpending" role="button" class="btn btn-primary" ng-click="ctrl.pendingfriends()">Request Pending</a>
+		<input type="button" class="btn btn-primary" value="All Users" ng-click="ctrl.fetchAllUsers()"/>
+		<br/><br/>
+		<div class="row">
+			<div ng-repeat="up in ctrl.users | filter:{approved: 'Y'} | filter:searchTerm">
+				<div id="isotope-gallery-container" ng-show="up.useremail!=currentUser.useremail">
+					<div class="col-md-3 col-sm-6 col-xs-12 gallery-item-wrapper">
+						<div class="gallery-item" style="text-align: center;">
+							<div class="gallery-thumb">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title" style="font-weight: bold;">
+											{{up.fstname}}&nbsp;&nbsp;{{up.midname}}&nbsp;&nbsp;{{up.lstname}}
+										</h3>
+									</div>
+									<div class="panel-body">
+										<img src="./resources/images/{{up.avtar}}" height="100px" width="110px"
+										    alt="{{up.fstname}}"/><br/>
+										<b>{{up.dateofbirth | date:fullDate}}, {{up.gender}}</b><br />
+										{{up.city}}, {{up.useremail}}<br/>
+										<p>
+											<input type="button" class="btn btn-info" value="Add Friend"
+												ng-click="ctrl.addfriend(up.useremail)">
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top headroom">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><img
+					src="resources/assets/images/logo.png"
+					alt="Progressus HTML5 template"></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li class="active"><a href="#">Home</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">User<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#/usertype">User Type</a></li>
+						<li><a href="#/userrole">User Role</a></li>
+						<li><a href="#/listusersadmin">Approve User</a></li>
+					</ul>
+					
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Blogs<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/viewblogs">View Blog</a></li>
+							<li><a href="#/approveblogs">Approve Blog</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Forum<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/viewforums">View Forums</a></li>
+							<li><a href="#/approveforums">Approve Forum</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Event<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/addevent">Add Event</a></li>
+							<li><a href="#/viewevents">List Events</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Bulletin<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/addbulletin">Add Bulletin</a></li>
+							<li><a href="#/allbulletins">List Bulletin</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Job<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/addjob">Add Job</a></li>
+							<li><a href="#/viewjobs">List Jobs</a></li>
+							<li><a href="#/viewappliedjobs">List Applied Jobs</a></li>
+						</ul>
+					</li>
+					<li><a ng-hide="currentUser.useremail==undefined"
+						href="#/home" ng-click="ctrl.logoutuser()">Logout</a></li>
+					<li style="font-weight: bold; color: white;"
+						ng-show="currentUser.useremail!==undefined">
+						<br/><br/>{{currentUser.useremail}} : {{currentUser.currentrole}}
+			</div>
+			</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

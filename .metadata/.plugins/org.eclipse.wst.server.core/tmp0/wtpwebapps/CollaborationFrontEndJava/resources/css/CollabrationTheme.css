@@ -1,0 +1,32 @@
+body{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.navbar {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 0;
+	font-size: 14px;
+	letter-spacing: 2px;
+}
+
+.navbar-nav  li a:hover {
+	color: #1abc9c !important;
+}
+
+hr {
+	display: block;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: inset;
+	border-width: 1px;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}

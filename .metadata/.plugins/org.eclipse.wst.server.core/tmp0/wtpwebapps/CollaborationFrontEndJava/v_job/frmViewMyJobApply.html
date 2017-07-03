@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div class="generic-container" ng-controller="JobController as ctrl">
+		<br/><br/><br/><br/><br/>
+		<h3>List of Applied</h3>
+		<p>
+		Search Job:<input type="text" size="40" ng-model="searchTerm" />
+		</p><br/>
+		<table class="table table-striped" style="width: 90%">
+			<tr style="font-weight: bold;">
+				<td style="width: 10%">ID#</td>
+				<td style="width: 10%">JOB ID</td>
+				<td style="width: 10%">STATUS</td>
+				<td style="width: 20%">USER EMAIL</td>
+				<td style="width: 40%">REMARK</td>
+			<tr ng-repeat="ja in ctrl.jobapplications | filter:searchTerm">
+				<td style="width: 10%;">{{ja.id}}</td>
+				<td style="width: 10%;">{{ja.jobid}}</td>
+				<td style="width: 10%;">{{ja.status}}</td>
+				<td style="width: 20%;">{{ja.useremail}}</td>
+				<td style="width: 40%;">{{ja.remark}}</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

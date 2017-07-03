@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+
+	<div class="container" align="center"
+		ng-controller="UserRoleController as ctrl">
+		<form name="myform" role="form" ng-submit="ctrl.submit()">
+			<table style="width: 35%">
+				<tr>
+					<td style=""></td>
+				</tr>
+				<tr>
+					<td style="width: 35%">
+						<div class="form-group"
+							ng-class="{ 'has-error': form.rolename.$dirty && form.rolename.$error.required}">
+							<label for="rolename">Role name :</label> 
+								<input type="text" name="rolename" id="rolename" class="form-control"
+									ng-model="ctrl.userrole.rolename" required />
+									<span ng-show="form.rolename.$dirty && form.rolename.$error.required" class="help-block"></span>
+							</div>
+					</td>
+				<tr>
+				<tr>
+					<td style="width: 35%" style="text-align: right;">
+						<div class="form-group">
+							<button type="submit"
+								ng-disabled="form$invalid || ctrl.dataLoading"
+								class="btn btn-info">Submit</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<table class="table table-striped" style="width: 35%">
+			<tr style="font-weight: bold;">
+				<td style="width: 10%">ID#</td>
+				<td style="width: 15%">ROLE NAME</td>
+				<td style="width: 10%">FUNCTIONS</td>
+			</tr>
+			<tr ng-repeat="ur in ctrl.userroles">
+				<td style="width: 10%">{{ur.roleid}}</td>
+				<td style="width: 15%">{{ur.rolename}}</td>
+				<td style="width: 10%"><input type="button"
+					class="btn btn-info" value="Edit" ng-click="ctrl.editopt()">
+					<input type="button" class="btn btn-danger" value="Delete"
+					ng-click="ctrl.delopt(ur.roleid)"></td>
+			</tr>
+		</table>
+
+	</div>
+</body>
+</html>

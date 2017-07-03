@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div class="container" ng-controller="BlogController as ctrl">
+		<br/><br/><br/><br/><br/><br/>
+		<h2>Add new Blog</h2>
+		<form class="form-horizontal" name="myForm" role="form" ng-submit="ctrl.submit()">
+			<div class="form-group" ng-class="{'has-error': form.blogtitle.$dirty && form.blogtitle.$error.required}">
+				<label for="blogtitle" class="col-sm-3 control-label" style="text-align: right;">Blog Title:</label>
+				<div class="col-sm-6">
+					<input type="text" name="blogtitle" id="fstname" class="form-control" placeholder="Blog Title"
+						ng-model="ctrl.blog.blogtitle" required />
+						<span ng-show="form.blogtitle.$dirty && form.blogtitle.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="{'has-error': form.blogcontent.$dirty && form.blogcontent.$error.required}">
+				<label for="blogcontent" class="col-sm-3 control-label">Blog Description :</label>
+				<div class="col-sm-6">
+					<textarea rows="5" cols="80" id="blogcontent" name="blogcontent" class="form-control" ng-model="ctrl.blog.blogcontent" required></textarea>
+					<span ng-show="form.blogcontent.$dirty && form.blogcontent.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+					<button type="submit" ng-disabled="form$invalid || ctrl.dataLoading" class="btn btn-info">Create Blog?</button>
+					<button type="reset" class="btn btn-danger" ng-click="ctrl.reset()" >Clear</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

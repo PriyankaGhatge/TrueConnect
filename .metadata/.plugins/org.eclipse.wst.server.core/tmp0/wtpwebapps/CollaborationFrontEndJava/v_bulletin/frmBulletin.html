@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+	<script src="resources/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myApp">
+<br>
+	<div class="container" ng-controller="BulletinController as ctrl">
+	<br/><br/><br/><br/><br/><br/>
+	<h2>Add new Bulletin</h2>
+		<form class="form-horizontal" name="myForm" role="form" ng-submit="ctrl.submit()">
+		
+			<div class="form-group" ng-class="{'has-error': form.bulsubject.$dirty && form.bulsubject.$error.required}">
+				<label for="bulsubject" class="col-sm-3 control-label">Bulletin Title :</label>
+				<div class="col-sm-6">
+					<input type="text" name="bulsubject" id="bulsubject" class="form-control" ng-model="ctrl.bulletin.bulsubject" required/>
+					<span ng-show="form.bulsubject.$dirty && form.bulsubject.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.buldescription.$dirty && form.buldescription.$error.required}">
+				<label for="buldescription" class="col-sm-3 control-label">Description :</label>
+				<div class="col-sm-6">
+					<textarea rows="5" cols="80" id="buldescription" name="buldescription" class="form-control" ng-model="ctrl.bulletin.buldescription" required></textarea>
+					<span ng-show="form.buldescription.$dirty && form.buldescription.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+					<button type="submit" ng-disabled="form$invalid || ctrl.dataLoading" class="btn btn-info">Save Bulletin?</button>
+					<button type="reset" class="btn btn-danger" ng-click="ctrl.reset()" >Clear</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

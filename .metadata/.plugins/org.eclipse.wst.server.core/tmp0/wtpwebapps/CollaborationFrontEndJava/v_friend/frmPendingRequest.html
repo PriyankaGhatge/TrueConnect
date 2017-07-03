@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div class="generic-container" ng-controller="FriendController as ctrl">
+		<br/><br/><br/><br/><br/>
+		<div class="row">
+			<h3>Pending({{ctrl.friends.length}})</h3>
+			<div ng-repeat="up in ctrl.friends | filter:{status:'N'}">
+				<div id="isotope-gallery-container">
+					<div class="col-md-3 col-sm-6 col-xs-12 gallery-item-wrapper">
+						<div class="gallery-item" style="text-align: center;">
+							<div class="gallery-thumb">
+								<div class="panel panel-default">
+									<div class="panel-heading" ng-repeat="un in ctrl.users | filter: {useremail: up.requser}">
+										<img src="./resources/images/{{un.avtar}}" height="100px" width="110px"
+										    alt="{{up.fstname}}"/><br/>
+										{{un.fstname}}&nbsp;&nbsp;{{un.midname}}&nbsp;&nbsp;{{un.lstname}}&nbsp;&nbsp;<br/>
+										<b>{{un.dateofbirth | date:fullDate}}, {{un.gender}}</b><br />
+										{{un.city}}, {{un.useremail}}<br />
+										<b ng-if="up.isonline=='Y'" style="color: green">Online</b>
+										<b ng-if="up.isonline=='N'" style="color: red">Offline</b>
+									</div>
+									<div class="panel-body">
+										<p>
+											<input type="button" class="btn btn-info" value="Accept"
+												ng-click="ctrl.acceptrequest(up.reqid)">
+											<input type="button" class="btn btn-danger" value="Reject"
+												ng-click="ctrl.rejectrequest(up.reqid)">
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
